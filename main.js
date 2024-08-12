@@ -84,19 +84,32 @@ var conanData = [
 
 
 //기본 설정
-DisplayInformationOnTheScreen(0);   //1화 정보 표시
+const urlParams = new URLSearchParams(window.location.search);
+var startEpNum;
+if (urlParams.has('ep')) {
+    console.log(urlParams.get('ep') + ":url 파라미터");
+    startEpNum = urlParams.get('ep')
+} else {
+    startEpNum = 0;
+}
+DisplayInformationOnTheScreen(startEpNum);
+
+
 
 
 //이미지 슬라이드에 이미지 추가
 for (var i = 0; i < 5; i++) {
-    $('#mainThumbnail').append("<div class='carousel-item'><img src='img/test.webp' class='d-block w-100' alt='...'> </div>");
+    $('#mainThumbnail').append("<div class='carousel-item ep_img'><img src='img/Thumbnail"+(i+4)+".webp' class='d-block w-100' alt='...'> </div>");
 }
 
 
+//기본 이미지 변경
+//$('#carouselExampleControls').carousel(1);
 
 //이미지 슬라이드 움직임이 끝나면 정보표시
 $('#carouselExampleControls').on('slid.bs.carousel', function (Event) {
     DisplayInformationOnTheScreen(Event.to);
+
 })
 
 
@@ -106,5 +119,12 @@ function DisplayInformationOnTheScreen(epNum) {
     $('#ep').text(conanData[epNum].episode + "화");
     $('#ep_kr').text(conanData[epNum].episode_kr);
     $('#ep_title').text(conanData[epNum].title_kr);
+
+
+    // 현재 URL을 가져옴
+
+    // 새로운 URL로 페이지를 리디렉션
+    //window.location.href = currentUrl.toString();
+
 
 }

@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="style.css" />
     <title>명탐정 코난 정주행 가이드</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    
+
+
 </head>
 
 <body class="p-3 m-0 border-0 bd-example m-0 border-0">
@@ -101,13 +101,13 @@
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="false" data-bs-wrap="false">
                         <div class="carousel-inner" id="mainThumbnail">
                             <div class="carousel-item active">
-                                <img src="img/test.webp" class="d-block w-100" alt="...">
+                                <img src="img/Thumbnail1.webp" class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="img/test.webp" class="d-block w-100" alt="...">
+                                <img src="img/Thumbnail2.webp" class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="img/test.webp" class="d-block w-100" alt="...">
+                                <img src="img/Thumbnail3.webp" class="d-block w-100" alt="...">
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -167,10 +167,23 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="main.js"></script>
 
+    <script>
+        $(document).ready(function() {
+            const startUrl = new URLSearchParams(window.location.search);
 
-    
+            if (startUrl.has('ep')) {
+                var startEp = startUrl.get('ep')
+                $('#carouselExampleControls').carousel(Number(startEp));
+            }
+
+        });
+
+    </script>
+
+
 </body>
 
 </html>
