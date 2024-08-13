@@ -1269,6 +1269,7 @@ var isNamdoilMode = true;
 DisplayInformationOnTheScreen(mainEpNum);
 
 
+
 //남도일 신이치 모드 변경
 $("#btnradio1").on("click", function () {
     isNamdoilMode = true;
@@ -1292,6 +1293,7 @@ for (var i = 0; i < 44; i++) {
 $('#carouselExampleControls').on('slid.bs.carousel', function (Event) {
     DisplayInformationOnTheScreen(Event.to);
     mainEpNum = Event.to;
+    setCookie('epCookie', Event.to);
 
 })
 
@@ -1322,7 +1324,6 @@ function DisplayInformationOnTheScreen(epNum) {
         urls = [epData.epSortation2, epData.url_tving_kr2, epData.url_tving_jp2];
         makeUrlBox(urls);
     }
-
     if (epData.count > 2) {
         urls = [epData.epSortation3, epData.url_tving_kr3, epData.url_tving_jp3];
         makeUrlBox(urls);
@@ -1408,4 +1409,30 @@ function showAlertCopySuccess(ShowUrl) {
 //복사 실패시 경고창 보이기
 function showAlertCopyfailure(showErr) {
     $("#copyAlert").append("<div class=‘alert alert-danger d-flex align-items-center alert-dismissible fade show’ role=‘alert’> <svg class=‘bi flex-shrink-0 me-2’ width=‘24’ height=‘24’ role=‘img’ aria-label=‘Danger:’> <use xlink:href=‘#exclamation-triangle-fill’ /> </svg> <div> <i class=‘bi bi-exclamation-triangle-fill’></i> example danger alert with an icon </div> <button type=‘button’ class=‘btn-close’ data-bs-dismiss=‘alert’ aria-label=‘Close’></button> </div> </div>");
+}
+
+//쿠키 설정
+function setCookie(name, value, options = {}) {
+
+    options = {
+        path: '/',
+        // 필요한 경우, 옵션 기본값을 설정할 수도 있습니다.
+        ...options
+    };
+
+    if (options.expires instanceof Date) {
+        options.expires = options.expires.toUTCString();
+    }
+
+    let updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+
+    for (let optionKey in options) {
+        updatedCookie += "; " + optionKey;
+        let optionValue = options[optionKey];
+        if (optionValue !== true) {
+            updatedCookie += "=" + optionValue;
+        }
+    }
+
+    document.cookie = updatedCookie;
 }
