@@ -1,16 +1,19 @@
-## Hi there 👋
+코난 검은조직 나오는 에피소드만 보고싶은데 일일이 찾아보기 귀찮아서 만들었습니다.
 
-<!--
-**205sla/205sla** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
-Here are some ideas to get you started:
+https://205sla.github.io/conan/
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+![썸네일](https://github.com/user-attachments/assets/662c23a0-f84d-4809-acbb-52697f876e05)
+
+
+
+1. 제목 부분을 클릭해서 현재 애피소드 기준으로 주소를 복사할 수 있습니다.
+2. 남도일 / 신이치 버튼을 클릭해서 제목 스타일을 변경할 수 있습니다.
+
+
+
+추가할 것
+1. 라프텔 링크
+2. 네이버 시리즈온 링크
+3. 기타 링크
+4. 댓글 기능?
