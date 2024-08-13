@@ -1298,22 +1298,81 @@ $('#carouselExampleControls').on('slid.bs.carousel', function (Event) {
 
 //화면에 지금 에피소드 번호, 제목 등 표시하는 코드
 function DisplayInformationOnTheScreen(epNum) {
-    $('#ep').text(conanData[epNum].episode + "화");
-    $('#ep_kr').text(conanData[epNum].episode_kr);
+    var epData = conanData[epNum];
+
+    $('#ep').text(epData.episode + "화");
+    $('#ep_kr').text(epData.episode_kr);
 
     if (isNamdoilMode) {
-        $('#ep_title').text(conanData[epNum].title_kr);
+        $('#ep_title').text(epData.title_kr);
     } else {
-        $('#ep_title').text(conanData[epNum].title_jp);
+        $('#ep_title').text(epData.title_jp);
     }
-    
-    
+
+
     //urlBox
     $('#urlBox').html("");
-    for (var i = 0; i < conanData[epNum].count; i++){
-        console.log(conanData[epNum].count);
+
+    var urls;
+    if (epData.count > 0) {
+        urls = [epData.epSortation1, epData.url_tving_kr1, epData.url_tving_jp1];
+        makeUrlBox(urls);
     }
-    
+    if (epData.count > 1) {
+        urls = [epData.epSortation2, epData.url_tving_kr2, epData.url_tving_jp2];
+        makeUrlBox(urls);
+    }
+
+    if (epData.count > 2) {
+        urls = [epData.epSortation3, epData.url_tving_kr3, epData.url_tving_jp3];
+        makeUrlBox(urls);
+    }
+    if (epData.count > 3) {
+        urls = [epData.epSortation4, epData.url_tving_kr4, epData.url_tving_jp4];
+        makeUrlBox(urls);
+    }
+    if (epData.count > 4) {
+        urls = [epData.epSortation5, epData.url_tving_kr5, epData.url_tving_j5];
+        makeUrlBox(urls);
+    }
+    if (epData.count > 5) {
+        urls = [epData.epSortation6, epData.url_tving_kr6, epData.url_tving_jp6];
+        makeUrlBox(urls);
+    }
+
+}
+
+function makeUrlBox(urls) {
+    var newHtml = "<tr> <th scope=‘row’> " + urls[0] + " </th> ";
+
+    //티빙
+    if (urls[1] != '#' && urls[2] != '#') {
+        newHtml += "<td><a class=‘link-offset-1’ href=" + urls[1] + " target='_blank'>더빙</a> / <a class=‘link-offset-1’ href=" + urls[2] + " target='_blank'>자막</a></td>";
+    }
+    if (urls[1] != '#' && urls[2] == '#') {
+        newHtml += "<td><a class=‘link-offset-1’ href=" + urls[1] + " target='_blank'>더빙</a></td>";
+    }
+    if (urls[1] == '#' && urls[2] != '#') {
+        newHtml += "<td><a class=‘link-offset-1’ href=" + urls[2] + " target='_blank'>더빙</a></td>";
+    }
+    if (urls[1] == '#' && urls[2] == '#') {
+        newHtml += "<td>#</td>";
+    }
+
+
+    //라프텔
+    newHtml += "<td><a class=‘link-offset-1’ href=‘#’>Offset 1 link</a></td>";
+
+    //시리즈온
+    newHtml += "<td><a class=‘link-offset-1’ href=‘#’>Offset 1 link</a></td>";
+
+    //기타 
+    newHtml += "<td><a class=‘link-offset-1’ href=‘#’>Offset 1 link</a></td>";
+
+
+    newHtml += "</tr>"
+    $('#urlBox').append(newHtml);
+
 }
 
 
@@ -1337,6 +1396,7 @@ $("#copyLink").on("click", function () {
     });
 
 });
+
 
 
 
