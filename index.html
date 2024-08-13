@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="style.css" />
     <title>명탐정 코난 정주행 가이드</title>
 
@@ -14,7 +15,7 @@
 
 </head>
 
-<body class="p-3 m-0 border-0 bd-example m-0 border-0">
+<body class="p-3 m-0 border-0 bd-example m-0 border-0" style="overflow-x: hidden">
 
     <!-- 사상단 바-->
     <nav class="navbar navbar-dark bg-dark fixed-top">
@@ -27,7 +28,6 @@
                     <img src="img/conanLogo.png" alt="Logo" width="30" height="33" class="d-inline-block align-text-top"> 코난 정주행
                 </span>
             </a>
-
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -49,24 +49,24 @@
 
                         </li>
                         <li class="nav-item mt-3">
-                            <a class="nav-link active" aria-current="page" href="index.html">기본 화면</a>
+                            <a class="nav-link active" aria-current="page" href="index.html"><i class="bi bi-house"></i> 기본 화면</a>
                         </li>
 
 
                         <li class="nav-item">
-                            <a class="nav-link" href="https://www.notion.so/bc9cf91161e04b44937ecf5956d90902">노션으로 보기</a>
+                            <a class="nav-link" href="https://www.notion.so/bc9cf91161e04b44937ecf5956d90902"><i class="bi bi-card-checklist"></i> 노션으로 보기</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                만든 놈
+                                <i class="bi bi-person-square"></i> 만든 놈
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="#">인스타</a></li>
-                                <li><a class="dropdown-item" href="#">개인 홈페이지</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="bi bi-instagram"></i> 인스타</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="bi bi-file-earmark-person"></i> 개인 홈페이지</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">깃허브</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="bi bi-github"></i> 깃허브</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -74,6 +74,12 @@
             </div>
         </div>
     </nav>
+
+    <!-- 복사할때 결과 상자 보여주는 곳-->
+    <div id="copyAlert"> </div>
+
+
+
 
     <div class="container">
         <div class="row">
@@ -83,7 +89,7 @@
                 <!-- 메인 콘텐츠-->
                 <div id="mainContent">
                     <!-- 몇화 제목-->
-                    <div class="container mt-5">
+                    <div class="container mt-1">
                         <div class="row">
                             <div class="col-2">
                                 <span id="ep">001화</span>
@@ -92,7 +98,10 @@
                                 <span id="ep_kr">1기 1화</span>
                             </div>
                             <div class="col-7 text-end">
-                                <span id="ep_title">제트 코스터 살인사건</span>
+                                <button type="button" class="btn btn-light" id="copyLink">
+                                    <i class="bi bi-link"></i> <span id="ep_title">제트 코스터 살인사건</span>
+                                </button>
+
                             </div>
                         </div>
                     </div>
@@ -127,10 +136,10 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">티빙 (더빙)</th>
-                                <th scope="col">티빙 (자막)</th>
-                                <th scope="col">라프텔 (더빙)</th>
-                                <th scope="col">라프텔 (자막)</th>
+                                <th scope="col">티빙 </th>
+                                <th scope="col">라프텔 </th>
+                                <th scope="col">시리즈 온</th>
+                                <th scope="col">기타 </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -177,7 +186,7 @@
 
             if (startUrl.has('ep')) {
                 var startEp = startUrl.get('ep')
-                $('#carouselExampleControls').carousel(Number(startEp)-1);
+                $('#carouselExampleControls').carousel(Number(startEp) - 1);
             }
 
         });
