@@ -49,7 +49,7 @@
 
                         </li>
                         <li class="nav-item mt-3">
-                            <a class="nav-link active" aria-current="page" href="index.html"><i class="bi bi-house"></i> 기본 화면</a>
+                            <a class="nav-link active" aria-current="page" href="index.html?ep=1"><i class="bi bi-house"></i> 기본 화면</a>
                         </li>
 
 
@@ -163,32 +163,7 @@
     <script src="main.js"></script>
 
     <script>
-        //url 파라미터를 이용한 접근 처리
-        $(document).ready(function() {
-            const startUrl = new URLSearchParams(window.location.search);
-
-            if (startUrl.has('ep')) {
-                var startEp = startUrl.get('ep');
-                $('#carouselExampleControls').carousel(Number(startEp) - 1);
-            } else {
-                try {
-                    var startEp = getCookie('epCookie');
-                    console.log(Event.to + "쿠키");
-                    $('#carouselExampleControls').carousel(Number(startEp));
-                } catch (err) {
-                    console.log("첫 방?문");
-                }
-            }
-
-        });
-
-
-        function getCookie(name) {
-            let matches = document.cookie.match(new RegExp(
-                "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-            ));
-            return matches ? decodeURIComponent(matches[1]) : undefined;
-        }
+        console.log("다해줬잖아..!");
 
     </script>
 

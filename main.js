@@ -22,6 +22,32 @@ function deiteo_da_ilgeosseoyo() {
     for (var i = 0; i < 44; i++) {
         $('#mainThumbnail').append("<div class='carousel-item ep_img'><img src='img/" + conanData[i + 3].episode + ".webp' class='d-block w-100' alt='...'> </div>");
     }
+
+    //url 파라미터를 이용한 접근 처리
+    const startUrl = new URLSearchParams(window.location.search);
+
+    if (startUrl.has('ep')) {
+        var startEp = startUrl.get('ep');
+        $('#carouselExampleControls').carousel(Number(startEp) - 1);
+
+        //url파라미터 지우기
+        window.history.pushState(null, window.document.title, "/" + window.location.href.substring(window.location.href.lastIndexOf('/') + 1).split("?")[0]);
+
+    } else {
+        // 없으면 쿠키로
+        try {
+            var startEp = getCookie('epCookie');
+            console.log(Event.to + "쿠키");
+            $('#carouselExampleControls').carousel(Number(startEp));
+        } catch (err) {
+            console.log("첫 방?문");
+        }
+    }
+
+
+
+
+
 }
 
 
@@ -131,10 +157,10 @@ function makeUrlBox(urls) {
 
 
     //시리즈온
-    newHtml += "<td>연결중...</td>";
+    newHtml += "<td>곧...</td>";
 
     //기타 
-    newHtml += "<td>연결중...</td>";
+    newHtml += "<td>...</td>";
 
 
     newHtml += "</tr>"
@@ -159,7 +185,8 @@ $("#copyLink").on("click", function () {
     navigator.clipboard.writeText(newUrl).then(() => {
         showAlertCopySuccess(newUrl);
     }).catch(err => {
-        showAlertCopyfailure(err);
+        console.error(err);
+        console.error("복사 실패");
     });
 
 });
@@ -169,15 +196,21 @@ $("#copyLink").on("click", function () {
 
 //복사 성공시 복사한 url 보이기
 function showAlertCopySuccess(ShowUrl) {
-    $("#copyAlert").append("<div class='alert alert-success d-flex align-items-center alert-dismissible fade show' role='alert'> <svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Success:'> <use xlink:href='#check-circle-fill' /> </svg> <div> <i class='bi bi-check-circle-fill'></i> URL이 클립보드에 복사되었습니다: " + ShowUrl + " </div><button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button> </div>");
+    $("#copyAlert").append("<div class='alert alert-success d-flex align-items-center alert-dismissible fade show' role='alert'> <svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Success:'> <use xlink:href='#check-circle-fill' /> </svg> <div> <i class='bi bi-check-circle-fill'></i> 현재 에피소드의 URL이 클립보드에 복사되었습니다: " + ShowUrl + " </div><button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button> </div>");
 }
 
-//복사 실패시 경고창 보이기
-function showAlertCopyfailure(showErr) {
-    $("#copyAlert").append("<div class=‘alert alert-danger d-flex align-items-center alert-dismissible fade show’ role=‘alert’> <svg class=‘bi flex-shrink-0 me-2’ width=‘24’ height=‘24’ role=‘img’ aria-label=‘Danger:’> <use xlink:href=‘#exclamation-triangle-fill’ /> </svg> <div> <i class=‘bi bi-exclamation-triangle-fill’></i> example danger alert with an icon </div> <button type=‘button’ class=‘btn-close’ data-bs-dismiss=‘alert’ aria-label=‘Close’></button> </div> </div>");
-}
 
-//쿠키 설정
+
+
+
+//쿠키 가져오기
+function getCookie(name) {
+    let matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+//쿠키 설정하
 function setCookie(name, value, options = {}) {
 
     options = {
