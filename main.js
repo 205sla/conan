@@ -134,7 +134,7 @@ function makeUrlBox(urls) {
         newHtml += "<td><a class=‘link-offset-1’ href=" + urls[1] + " target='_blank'>더빙</a></td>";
     }
     if (urls[1] == '#' && urls[2] != '#') {
-        newHtml += "<td><a class=‘link-offset-1’ href=" + urls[2] + " target='_blank'>더빙</a></td>";
+        newHtml += "<td><a class=‘link-offset-1’ href=" + urls[2] + " target='_blank'>자막</a></td>";
     }
     if (urls[1] == '#' && urls[2] == '#') {
         newHtml += "<td>#</td>";
@@ -149,7 +149,7 @@ function makeUrlBox(urls) {
         newHtml += "<td><a class=‘link-offset-1’ href=" + urls[3] + " target='_blank'>더빙</a></td>";
     }
     if (urls[3] == '#' && urls[4] != '#') {
-        newHtml += "<td><a class=‘link-offset-1’ href=" + urls[4] + " target='_blank'>더빙</a></td>";
+        newHtml += "<td><a class=‘link-offset-1’ href=" + urls[4] + " target='_blank'>자막</a></td>";
     }
     if (urls[3] == '#' && urls[4] == '#') {
         newHtml += "<td>#</td>";
