@@ -44,7 +44,7 @@ function deiteo_da_ilgeosseoyo() {
         }
     }
 
-
+    consoleArt();
 
 
 
@@ -156,9 +156,6 @@ function makeUrlBox(urls) {
     }
 
 
-    //시리즈온
-    newHtml += "<td>곧...</td>";
-
     //기타 
     newHtml += "<td>...</td>";
 
@@ -234,4 +231,12 @@ function setCookie(name, value, options = {}) {
     }
 
     document.cookie = updatedCookie;
+}
+
+function consoleArt() {
+    console.log("   ▄▄·        ▐ ▄  ▄▄▄·  ▐ ▄ \n  ▐█ ▌▪▪     •█▌▐█▐█ ▀█ •█▌▐█\n  ██ ▄▄ ▄█▀▄ ▐█▐▐▌▄█▀▀█ ▐█▐▐▌\n  ▐███▌▐█▌.▐▌██▐█▌▐█ ▪▐▌██▐█▌\n  ·▀▀▀  ▀█▄▀▪▀▀ █▪ ▀  ▀ ▀▀ █▪\n");
+
+
+
+
 }
