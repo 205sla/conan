@@ -40,14 +40,13 @@ function deiteo_da_ilgeosseoyo() {
             console.log(Event.to + "쿠키");
             $('#carouselExampleControls').carousel(Number(startEp));
         } catch (err) {
+            FirstVisit();
             console.log("첫 방?문");
         }
     }
 
     consoleArt();
-
-
-
+    FirstVisit();
 }
 
 
@@ -235,8 +234,25 @@ function setCookie(name, value, options = {}) {
 
 function consoleArt() {
     console.log("   ▄▄·        ▐ ▄  ▄▄▄·  ▐ ▄ \n  ▐█ ▌▪▪     •█▌▐█▐█ ▀█ •█▌▐█\n  ██ ▄▄ ▄█▀▄ ▐█▐▐▌▄█▀▀█ ▐█▐▐▌\n  ▐███▌▐█▌.▐▌██▐█▌▐█ ▪▐▌██▐█▌\n  ·▀▀▀  ▀█▄▀▪▀▀ █▪ ▀  ▀ ▀▀ █▪\n");
+}
 
+function FirstVisit() {
+    const yourEndpoint = "https://puuu.sh/notify/WRrw4alQ0o"
 
+    const notificationData = {
+        title: 'Hello Puuush!',
+        body: 'This is a notification!'
+    };
 
+    fetch(`https://puuu.sh/notify/${yourEndpoint}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(notificationData)
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 
 }
