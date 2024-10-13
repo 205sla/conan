@@ -20,7 +20,7 @@ function deiteo_da_ilgeosseoyo() {
 
     //이미지 슬라이드에 이미지 추가
     for (var i = 0; i < 44; i++) {
-        $('#mainThumbnail').append("<div class='carousel-item ep_img'><img src='img/" + conanData[i + 3].episode + ".webp' class='d-block w-100' alt='...'> </div>");
+        $('#mainThumbnail').append("<div class='carousel-item ep_img'><img src='img/" + conanData[i + 3].episode + ".webp' class='d-block w-100' alt='"+conanData[i + 3].title_kr+"'> </div>");
     }
 
     //url 파라미터를 이용한 접근 처리
